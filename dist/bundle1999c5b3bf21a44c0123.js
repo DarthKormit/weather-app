@@ -16,13 +16,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
 
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../../../../../../src/assets/background-6.jpg */ "./src/assets/background-6.jpg"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);"]);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\nbody {\n  background-color: #2fa8cc;\n  font-family: \"Roboto\", sans-serif;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100vh;\n  overflow: hidden;\n  margin: 0;\n  padding: 20px;\n}\n\n.container {\n  background-color: #f4f4f4;\n  border-radius: 10px;\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);\n  padding: 50px 20px;\n  text-align: center;\n  max-width: 100%;\n  width: 800px;\n}\n\nh3 {\n  margin: 0;\n  opacity: 0.5;\n  letter-spacing: 2px;\n}\n\nimg {\n  width: 100px;\n  margin-bottom: 20px;\n}\n\n.joke {\n  font-size: 30px;\n  letter-spacing: 1px;\n  line-height: 40px;\n  margin: 50px auto;\n  max-width: 600px;\n}\n\n.btn {\n  background-color: #2fa8cc;\n  color: #f4f4f4;\n  border: 0;\n  border-radius: 10px;\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);\n  padding: 14px 40px;\n  font-size: 16px;\n  cursor: pointer;\n}\n.btn:active {\n  transform: scale(0.98);\n}\n.btn:focus {\n  outline: 0;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAMA;EACE,sBAAA;AAJF;;AAOA;EACE,yBATc;EAUd,iCAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;EACA,aAAA;EACA,gBAAA;EACA,SAAA;EACA,aAAA;AAJF;;AAOA;EACE,yBArBgB;EAsBhB,mBAAA;EACA,wEAtBW;EAuBX,kBAAA;EACA,kBAAA;EACA,eAAA;EACA,YAAA;AAJF;;AAOA;EACE,SAAA;EACA,YAAA;EACA,mBAAA;AAJF;;AAOA;EACE,YAAA;EACA,mBAAA;AAJF;;AAOA;EACE,eAAA;EACA,mBAAA;EACA,iBAAA;EACA,iBAAA;EACA,gBAAA;AAJF;;AAOA;EACE,yBAnDc;EAoDd,cAnDgB;EAoDhB,SAAA;EACA,mBAAA;EACA,uEAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;AAJF;AAME;EACE,sBAAA;AAJJ;AAOE;EACE,UAAA;AALJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');\r\n\r\n$primary-color: #2fa8cc;\r\n$secondary-color: #f4f4f4;\r\n$box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);\r\n\r\n* {\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: $primary-color;\r\n  font-family: 'Roboto', sans-serif;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  margin: 0;\r\n  padding: 20px;\r\n}\r\n\r\n.container {\r\n  background-color: $secondary-color;\r\n  border-radius: 10px;\r\n  box-shadow: $box-shadow;\r\n  padding: 50px 20px;\r\n  text-align: center;\r\n  max-width: 100%;\r\n  width: 800px;\r\n}\r\n\r\nh3 {\r\n  margin: 0;\r\n  opacity: 0.5;\r\n  letter-spacing: 2px;\r\n}\r\n\r\nimg {\r\n  width: 100px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.joke {\r\n  font-size: 30px;\r\n  letter-spacing: 1px;\r\n  line-height: 40px;\r\n  margin: 50px auto;\r\n  max-width: 600px;\r\n}\r\n\r\n.btn {\r\n  background-color: $primary-color;\r\n  color: $secondary-color;\r\n  border: 0;\r\n  border-radius: 10px;\r\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);\r\n  padding: 14px 40px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n\r\n  &:active {\r\n    transform: scale(0.98);\r\n  }\r\n\r\n  &:focus {\r\n    outline: 0;\r\n  }\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\nbody {\n  background-color: #08410c;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center center;\n  font-family: \"Roboto\", sans-serif;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100vh;\n  overflow: auto;\n  margin: 0;\n  padding: 20px;\n}\n\nh1 {\n  margin: 0;\n  opacity: 0.5;\n  letter-spacing: 2px;\n}\n\n.rest-of-week {\n  display: flex;\n  width: 95%;\n  justify-content: space-between;\n  margin: 0;\n  position: absolute;\n  top: 75%;\n  /* overflow: auto; */\n}\n\n.main-day-div {\n  display: flex;\n  width: 100%;\n  height: 50%;\n  margin: 0;\n  justify-content: space-between;\n  margin-bottom: 8%;\n}\n\n.main-day-card {\n  width: 47.5%;\n}\n\n.main-day-card > span {\n  justify-content: center;\n}\n\n.main-day-card-left {\n  width: 23.75%;\n  float: left;\n}\n\n.main-day-card-right {\n  width: 23.75%;\n  float: right;\n}\n\n.main-day-card, .main-day-card-left, .main-day-card-right, .weather-day-card {\n  display: block;\n  justify-content: center;\n  margin: 0;\n  padding: 15px;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(8px);\n  border-radius: 6px;\n  border: 1px solid rgba(145, 145, 145, 0.25);\n}\n\nspan {\n  display: flex;\n  margin: 0;\n  color: white;\n  font-size: 20px;\n  /* height: auto;\n  width: 100%;\n  max-width: 100%; */\n  word-wrap: break-word;\n}\n\nimg {\n  display: flex;\n  width: 100%;\n  max-width: 100px;\n  /* height: auto; */\n  justify-self: center;\n  margin: auto;\n  filter: brightness(0) invert(1);\n}\n\n.search-container {\n  display: flex;\n  float: right;\n  justify-content: center;\n  /* height: 4rem; */\n  margin: 0;\n  position: absolute;\n  top: 10%;\n  border-bottom: solid 2px rgb(255, 255, 255);\n}\n\ninput[type=text] {\n  padding: 9px;\n  padding-bottom: 2px;\n  max-height: 100%;\n  font-size: 24px;\n  border: none;\n  background-color: transparent;\n  color: white;\n}\n\ninput:focus {\n  border: none;\n  outline: none;\n}\n\n.search-container button {\n  float: right;\n  /* padding: 6px 10px; */\n  background: transparent;\n  font-size: 17px;\n  border: none;\n  cursor: pointer;\n}\n\nform {\n  display: flex;\n  height: 100%;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA;EACE,sBAAA;AACF;;AAEA;EACE,yBAAA;EACA,yDAAA;EACA,4BAAA;EACA,sBAAA;EACA,kCAAA;EACA,iCAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;EACA,aAAA;EACA,cAAA;EACA,SAAA;EACA,aAAA;AACF;;AAEA;EACE,SAAA;EACA,YAAA;EACA,mBAAA;AACF;;AACA;EACE,aAAA;EACA,UAAA;EACA,8BAAA;EACA,SAAA;EACA,kBAAA;EACA,QAAA;EACA,oBAAA;AAEF;;AACA;EACE,aAAA;EACA,WAAA;EACA,WAAA;EACA,SAAA;EACA,8BAAA;EACA,iBAAA;AAEF;;AACA;EACE,YAAA;AAEF;;AACA;EACE,uBAAA;AAEF;;AACA;EACE,aAAA;EACA,WAAA;AAEF;;AACA;EACE,aAAA;EACA,YAAA;AAEF;;AAKA;EACE,cAAA;EACA,uBAAA;EACA,SAAA;EACA,aAAA;EACA,mCAAA;EACA,0BAAA;EACA,kBAAA;EACA,2CAAA;AAFF;;AAKA;EACE,aAAA;EACA,SAAA;EACA,YAAA;EACA,eAAA;EACA;;oBAAA;EAGA,qBAAA;AAFF;;AAKA;EACE,aAAA;EACA,WAAA;EACA,gBAAA;EACA,kBAAA;EACA,oBAAA;EACA,YAAA;EACA,+BAAA;AAFF;;AAKA;EACE,aAAA;EACA,YAAA;EACA,uBAAA;EACA,kBAAA;EACA,SAAA;EACA,kBAAA;EACA,QAAA;EACA,2CAAA;AAFF;;AAKA;EACE,YAAA;EACA,mBAAA;EACA,gBAAA;EACA,eAAA;EACA,YAAA;EACA,6BAAA;EACA,YAAA;AAFF;;AAMA;EACE,YAAA;EACA,aAAA;AAHF;;AAMA;EACE,YAAA;EACA,uBAAA;EACA,uBAAA;EACA,eAAA;EACA,YAAA;EACA,eAAA;AAHF;;AAMA;EACE,aAAA;EACA,YAAA;AAHF","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: #08410c;\r\n  background-image: url(/src/assets/background-6.jpg);\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  background-position: center center;\r\n  font-family: \"Roboto\", sans-serif;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  overflow: auto;\r\n  margin: 0;\r\n  padding: 20px;\r\n}\r\n\r\nh1 {\r\n  margin: 0;\r\n  opacity: 0.5;\r\n  letter-spacing: 2px;\r\n}\r\n.rest-of-week {\r\n  display: flex;\r\n  width: 95%;\r\n  justify-content: space-between;\r\n  margin: 0;\r\n  position: absolute;\r\n  top: 75%;\r\n  /* overflow: auto; */\r\n}\r\n\r\n.main-day-div{\r\n  display: flex;\r\n  width: 100%;\r\n  height: 50%;\r\n  margin: 0;\r\n  justify-content: space-between;\r\n  margin-bottom: 8%;\r\n}\r\n\r\n.main-day-card{\r\n  width: 47.5%;\r\n}\r\n\r\n.main-day-card > span{\r\n  justify-content: center;\r\n}\r\n\r\n.main-day-card-left{\r\n  width: 23.75%;\r\n  float: left;\r\n}\r\n\r\n.main-day-card-right{\r\n  width: 23.75%;\r\n  float: right;\r\n}\r\n\r\n.weather-day-card {\r\n\r\n}\r\n\r\n.main-day-card, .main-day-card-left, .main-day-card-right, .weather-day-card{\r\n  display: block;\r\n  justify-content: center;\r\n  margin: 0;\r\n  padding: 15px;\r\n  -webkit-backdrop-filter: blur(10px);\r\n  backdrop-filter: blur(8px);\r\n  border-radius: 6px;\r\n  border: 1px solid rgba(145, 145, 145, 0.25);\r\n}\r\n\r\nspan {\r\n  display: flex;\r\n  margin: 0;\r\n  color: white;\r\n  font-size: 20px;\r\n  /* height: auto;\r\n  width: 100%;\r\n  max-width: 100%; */\r\n  word-wrap: break-word;\r\n}\r\n\r\nimg {\r\n  display: flex;\r\n  width: 100%;\r\n  max-width: 100px;\r\n  /* height: auto; */\r\n  justify-self: center;\r\n  margin: auto;\r\n  filter: brightness(0) invert(1);\r\n}\r\n\r\n.search-container {\r\n  display: flex;\r\n  float: right;\r\n  justify-content: center;\r\n  /* height: 4rem; */\r\n  margin: 0;\r\n  position: absolute;\r\n  top: 10%;\r\n  border-bottom: solid 2px rgb(255, 255, 255);\r\n}\r\n\r\ninput[type=\"text\"] {\r\n  padding: 9px;\r\n  padding-bottom: 2px;\r\n  max-height: 100%;\r\n  font-size: 24px;\r\n  border: none;\r\n  background-color: transparent;\r\n  color: white;\r\n  \r\n}\r\n\r\ninput:focus {\r\n  border: none;\r\n  outline: none;\r\n}\r\n\r\n.search-container button {\r\n  float: right;\r\n  /* padding: 6px 10px; */\r\n  background: transparent;\r\n  font-size: 17px;\r\n  border: none;\r\n  cursor: pointer;\r\n}\r\n\r\nform {\r\n  display: flex;\r\n  height: 100%;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -119,6 +123,41 @@ module.exports = function (cssWithMappingToString) {
     }
   };
   return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    options = {};
+  }
+  if (!url) {
+    return url;
+  }
+  url = String(url.__esModule ? url.default : url);
+
+  // If url is already wrapped in quotes, remove them
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  }
+  if (options.hash) {
+    url += options.hash;
+  }
+
+  // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+  return url;
 };
 
 /***/ }),
@@ -506,6 +545,16 @@ function styleTagTransform(css, styleElement) {
 
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./src/assets/background-6.jpg":
+/*!*************************************!*\
+  !*** ./src/assets/background-6.jpg ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "background-6.jpg";
+
 /***/ })
 
 /******/ 	});
@@ -534,6 +583,9 @@ module.exports = styleTagTransform;
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -559,6 +611,18 @@ module.exports = styleTagTransform;
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -573,6 +637,52 @@ module.exports = styleTagTransform;
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"bundle": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// no jsonp function
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -595,4 +705,4 @@ console.log("1, 2 ,3");
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle796acc1d3f18a1b18708.js.map
+//# sourceMappingURL=bundle1999c5b3bf21a44c0123.js.map
