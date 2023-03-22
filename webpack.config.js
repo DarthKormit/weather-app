@@ -1,6 +1,7 @@
 const path = require("path");
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   mode: "development",
@@ -11,47 +12,51 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
     clean: true,
-    assetModuleFilename: '[name][ext]',
+    assetModuleFilename: "assets/[name][ext]",
   },
-  devtool: 'source-map',
+  devtool: "source-map",
   devServer: {
     static: {
-        directory: path.resolve(__dirname, 'dist')
+      directory: path.resolve(__dirname, "dist"),
     },
-    port:3000,
+    port: 3000,
     open: true,
     hot: true,
     compress: true,
     historyApiFallback: true,
   },
-  module:{
+  module: {
     rules: [
-        {
-            test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'sass-loader'],
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
         },
-        {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['@babel/preset-env']
-                }
-            }
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        include: path.resolve(__dirname, "src"),
+        type: "asset/resource",
+        generator: {
+          filename: "assets/[name][ext]",
         },
-        {
-            test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            type: 'asset/resource',
-        }
-    ]
+      },
+    ],
   },
   plugins: [
     new HTMLWebpackPlugin({
-        title: 'Weather App',
-        filename: 'index.html',
-        template: 'src/template.html',
+      title: "Weather App",
+      filename: "index.html",
+      template: "src/template.html",
     }),
     new BundleAnalyzerPlugin(),
-  ]
+  ],
 };
