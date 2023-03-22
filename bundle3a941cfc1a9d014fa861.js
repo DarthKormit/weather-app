@@ -553,7 +553,7 @@ module.exports = styleTagTransform;
   \*************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "background-6.jpg";
+module.exports = __webpack_require__.p + "assets/background-6.jpg";
 
 /***/ })
 
@@ -701,8 +701,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
 
 console.log("1, 2 ,3");
+fetch("http://api.weatherapi.com/v1/current.json?key=273f0d3a84224f6ba65100946232203&q=Auckland&aqi=yes", {
+  mode: "cors"
+}).then(function (response) {
+  return response.json();
+}).then(function (response) {
+  console.log(response);
+});
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle1999c5b3bf21a44c0123.js.map
+//# sourceMappingURL=bundle3a941cfc1a9d014fa861.js.map
