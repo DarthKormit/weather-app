@@ -19,6 +19,14 @@ async function weatherAPICall() {
   document.getElementById("so2").innerHTML = weatherData.current.air_quality.so2 + " μg/m3";
   document.getElementById("pm").innerHTML = weatherData.current.air_quality.pm2_5 + "/" + weatherData.current.air_quality.pm10 + " μg/m3";
   document.getElementById("epa-index").innerHTML = weatherData.current.air_quality["us-epa-index"] + " ";
+
+  document.getElementById("main-day-location").innerHTML = weatherData.location.name;
+  document.getElementById("main-day-date").innerHTML = weatherData.location.localtime;
+  document.getElementById("main-day-weather").innerHTML = weatherData.current.condition.text;
+  document.getElementById("main-day-temperature").innerHTML = weatherData.current.temp_c + "℃";
+  document.getElementById("main-day-image").src = "https://cdn.weatherapi.com/weather/64x64/day/122.png";
+
+
   return weatherData;
 }
 
@@ -27,8 +35,23 @@ async function forecastAPICall() {
     "https://api.weatherapi.com/v1/forecast.json?key=273f0d3a84224f6ba65100946232203&&q=Auckland&days=8&aqi=yes&alerts=no",
     { mode: "cors" }
   );
+
   const weatherForecastData = await response.json();
+  let hourlyCards = document.getElementById("hourly-weather").childNodes;
+  console.log(hourlyCards);
+  hourlyCards.forEach(function(node, hours) {
+    let cardNodes = node.childNodes;
+    cardNodes[0].innerHTML = weatherForecastData.forecast.forecastday[0].hour[hours].time.slice(-5);
+    cardNodes[1].innerHTML = "";
+    // cardNodes[1].innerHTML = weatherForecastData.forecast.forecastday[0].hour[hours].condition.text;
+    cardNodes[2].innerHTML = weatherForecastData.forecast.forecastday[0].hour[hours].feelslike_c + "℃";
+    cardNodes[3].src = weatherForecastData.forecast.forecastday[0].hour[hours].condition.icon;
+    hours++;
+  });
+
+  
   console.log(weatherForecastData);
+  console.log((weatherForecastData.forecast.forecastday[0].hour[0]));
   return weatherForecastData;
 }
 

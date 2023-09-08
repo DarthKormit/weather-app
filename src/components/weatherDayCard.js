@@ -21,16 +21,21 @@ function createWeekDayWeatherCard() {
   return weekDayWeatherCard;
 }
 
-function createHourlyWeatherCard() {
+function createHourlyWeatherCard(id) {
   console.log();
   let hourlyWeatherCard = document.createElement("div");
   hourlyWeatherCard.className = "weather-day-hourly-card";
+  hourlyWeatherCard.id = id;
+
   let hourSpan = document.createElement("span");
   hourSpan.innerHTML = "1PM";
+
   let weatherSpan = document.createElement("span");
   weatherSpan.innerHTML = "Light Rain";
+
   let temperatureHourly = document.createElement("span");
   temperatureHourly.innerHTML = "23#8451";
+
   let weatherIcon = document.createElement("img");
   weatherIcon.src = lightRain;
 
@@ -101,7 +106,7 @@ function mainDayBrief() {
   temperature.innerHTML = "17&#8451; / 23&#8451;";
   let weatherIcon = document.createElement("img");
   weatherIcon.src = lightRain;
-  weatherIcon.id = "";
+  weatherIcon.id = "main-day-image";
 
   mainDayBrief.appendChild(location);
   mainDayBrief.appendChild(date);
@@ -145,7 +150,8 @@ function mainDayHourly() {
 
   // let hourly = hourlyData;
   for (let i = 0; i < 24; i++) {
-    hourlyWeather.appendChild(createHourlyWeatherCard());  
+    let id = "hourly" + "-" + i;
+    hourlyWeather.appendChild(createHourlyWeatherCard(id));  
   }
 
   mainDayHourlyDiv.appendChild(hourlyTitle);
