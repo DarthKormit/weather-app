@@ -33,7 +33,7 @@ h1 {
   position: relative;
   grid-gap: 1rem;
   grid-template-rows: auto;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   margin-top: 20px;
 }
 
@@ -106,14 +106,6 @@ h1 {
 }
 
 .main-day-middle, .main-day-left, .main-day-right, .weather-day-card, .weather-day-hourly-card{
-  // display: block;
-  // justify-content: center;
-  // margin: 0;
-  // padding: 15px;
-  // -webkit-backdrop-filter: blur(10px);
-  // backdrop-filter: blur(8px);
-  // border-radius: 6px;
-  // border: 1px solid rgba(145, 145, 145, 0.25);
   display: block;
   justify-content: center;
   margin: 0;
@@ -327,7 +319,7 @@ input:focus {
   cursor: pointer;
 }
 
-form {
+#search-bar-form {
   display: flex;
   height: 100%;
 }

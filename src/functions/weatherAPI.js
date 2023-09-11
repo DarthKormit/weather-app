@@ -1,6 +1,6 @@
-async function weatherAPICall() {
+async function weatherAPICall(location) {
   const response = await fetch(
-    "https://api.weatherapi.com/v1/current.json?key=273f0d3a84224f6ba65100946232203&q=Auckland&aqi=yes",
+    "https://api.weatherapi.com/v1/current.json?key=273f0d3a84224f6ba65100946232203&q="+location+"&aqi=yes",
     { mode: "cors" }
   );
   const weatherData = await response.json();
@@ -30,9 +30,9 @@ async function weatherAPICall() {
   return weatherData;
 }
 
-async function forecastAPICall() {
+async function forecastAPICall(location) {
   const response = await fetch(
-    "https://api.weatherapi.com/v1/forecast.json?key=273f0d3a84224f6ba65100946232203&&q=Auckland&days=8&aqi=yes&alerts=no",
+    "https://api.weatherapi.com/v1/forecast.json?key=273f0d3a84224f6ba65100946232203&&q="+location+"&days=8&aqi=yes&alerts=no",
     { mode: "cors" }
   );
 
@@ -47,6 +47,7 @@ async function forecastAPICall() {
     cardNodes[2].innerHTML = weatherForecastData.forecast.forecastday[0].hour[hours].feelslike_c + "℃";
     cardNodes[3].src = weatherForecastData.forecast.forecastday[0].hour[hours].condition.icon;
     hours++;
+    console.log(hours);
   });
 
   
@@ -55,37 +56,35 @@ async function forecastAPICall() {
   return weatherForecastData;
 }
 
-
-async function currentDayForecastData() {
-  const currentData = (await Promise.resolve(forecastAPICall())).forecast.forecastday[0];
-  console.log(currentData);
-  return currentData;
-}
-
-
-
-async function middleData() {
-  const currentData = (await Promise.resolve(weatherAPICall())).current;
-  const middleArray = []
-  middleArray.push(currentData.temp_c, currentData.condition.text);
-  return middleArray;
-}
-
-async function restOfWeekData() {
-  const currentData = (await Promise.resolve(weatherAPICall())).current;
-  const restOfWeekArray = []
-  restOfWeekArray.push();
-  return restOfWeekArray;
-}
-
-async function locationData() {
-  const locationData = (await Promise.resolve(weatherAPICall())).location;
-  console.log(locationData);
-  console.log(locationData.country);
-  console.log(locationData.name);
+async function restOfWeekData(location) {
+  const response = await fetch(
+    "https://api.weatherapi.com/v1/forecast.json?key=273f0d3a84224f6ba65100946232203&&q="+location+"&days=8&aqi=yes&alerts=no",
+    { mode: "cors" }
+  );
+  const weatherForecastData = await response.json();
+  let restOfWeekCards = document.getElementById("rest-week-container").childNodes;
+  try{
+    restOfWeekCards.forEach(function(node, day) {
+      let restWeekNodes = node.childNodes;
+      day++;
+      restWeekNodes[0].innerHTML = weatherForecastData.forecast.forecastday[day].date;
+      restWeekNodes[1].innerHTML = weatherForecastData.forecast.forecastday[day].day.condition.text;
+      restWeekNodes[2].innerHTML = weatherForecastData.forecast.forecastday[day].day.mintemp_c + "℃ /" + weatherForecastData.forecast.forecastday[day].day.maxtemp_c + "℃";
+      restWeekNodes[3].src = weatherForecastData.forecast.forecastday[day].day.condition.icon;
+      console.log(day);
+      console.log(node);
+    })
+  }
+  catch(err){
+    console.log(err.message);
+  }
+  
+  console.log(restOfWeekCards);
+  console.log(weatherForecastData);
+  return weatherForecastData;
 }
 
 // "Humidity, Wind, Wind direction, Pressure, UV, Precipitation mm, "
 // "CO, Ozone, Nitrogen, Sulfur, Particulate, EPA Index"
 
-export {weatherAPICall, forecastAPICall, locationData, middleData, restOfWeekData, currentDayForecastData };
+export {weatherAPICall, forecastAPICall, restOfWeekData };

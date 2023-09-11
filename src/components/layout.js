@@ -75,9 +75,10 @@ function createMainDayRight() {
 function createRestOfWeek() {
   let restOfWeekDiv = document.createElement("div");
   restOfWeekDiv.className = "rest-of-week";
+  restOfWeekDiv.id = "rest-week-container";
 
-  for (let i = 0; i < 7; i++) {
-    restOfWeekDiv.appendChild(createWeekDayWeatherCard());
+  for (let i = 0; i < 2; i++) {
+    restOfWeekDiv.appendChild(createWeekDayWeatherCard(i));
   }
   document.body.appendChild(restOfWeekDiv);
 }

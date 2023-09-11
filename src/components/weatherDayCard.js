@@ -1,9 +1,11 @@
 import lightRain from "../assets/lightRain.png";
+import searchBarListener from "../functions/searchBar";
 import { hourlyDayForecastData } from "../functions/weatherAPI";
 
-function createWeekDayWeatherCard() {
+function createWeekDayWeatherCard(id) {
   let weekDayWeatherCard = document.createElement("div");
   weekDayWeatherCard.className = "weather-day-card";
+  weekDayWeatherCard.id = "rest-week-" + id;
   let daySpan = document.createElement("span");
   daySpan.innerHTML = "Saturday";
   let weatherSpan = document.createElement("span");
@@ -122,8 +124,8 @@ function searchContainer() {
   searchContainer.className = "search-container";
   let searchBar = document.createElement("div");
   searchBar.className = "search-bar";
-  let searchForm = document.createElement("form");
-  searchForm.action = "/action_page.php";
+  let searchForm = document.createElement("div");
+  searchForm.id = "search-bar-form";
   let searchInput = document.createElement("input");
   searchInput.type = "text";
   searchInput.placeholder = "Search...";
@@ -131,6 +133,9 @@ function searchContainer() {
   let searchButton = document.createElement("button");
   searchButton.type = "submit";
   searchButton.innerHTML = "&#128269;";
+  searchButton.addEventListener("click", () => {
+    searchBarListener(searchInput.value);
+  });
 
   searchContainer.appendChild(searchBar);
   searchBar.appendChild(searchForm);
