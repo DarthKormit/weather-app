@@ -47,7 +47,7 @@ function createMainDayMiddle() {
   mainDayMiddle.appendChild(mainDayBrief());
   mainDayMiddle.appendChild(searchContainer());
   mainDayMiddle.appendChild(mainDayHourly());
-  mainDayMiddle.appendChild(createUnitSlider());
+  // mainDayMiddle.appendChild(createUnitSlider());
 
 
   return mainDayMiddle;

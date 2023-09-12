@@ -130,11 +130,19 @@ function searchContainer() {
   searchInput.type = "text";
   searchInput.placeholder = "Search...";
   searchInput.name = "search";
+  searchInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("search-button").click();
+    }
+  });
   let searchButton = document.createElement("button");
   searchButton.type = "submit";
+  searchButton.id = "search-button";
   searchButton.innerHTML = "&#128269;";
   searchButton.addEventListener("click", () => {
     searchBarListener(searchInput.value);
+    searchInput.value = "";
   });
 
   searchContainer.appendChild(searchBar);
