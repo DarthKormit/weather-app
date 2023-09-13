@@ -1,17 +1,22 @@
 import lightRain from "../assets/lightRain.png";
 import searchBarListener from "../functions/searchBar";
-import { hourlyDayForecastData } from "../functions/weatherAPI";
 
+//creates card element for the rest of the week days
 function createWeekDayWeatherCard(id) {
   let weekDayWeatherCard = document.createElement("div");
   weekDayWeatherCard.className = "weather-day-card";
+  //id used for element selection of individual cards
   weekDayWeatherCard.id = "rest-week-" + id;
+
   let daySpan = document.createElement("span");
   daySpan.innerHTML = "Saturday";
+
   let weatherSpan = document.createElement("span");
   weatherSpan.innerHTML = "Light Rain";
+
   let temperatureSpan = document.createElement("span");
   temperatureSpan.innerHTML = "17&#8451; / 23&#8451;";
+
   let weatherIcon = document.createElement("img");
   weatherIcon.src = lightRain;
 
@@ -23,10 +28,11 @@ function createWeekDayWeatherCard(id) {
   return weekDayWeatherCard;
 }
 
+//creates card element for hourly weather data
 function createHourlyWeatherCard(id) {
-  console.log();
   let hourlyWeatherCard = document.createElement("div");
   hourlyWeatherCard.className = "weather-day-hourly-card";
+  //id used for element selection of individual cards
   hourlyWeatherCard.id = id;
 
   let hourSpan = document.createElement("span");
@@ -49,6 +55,8 @@ function createHourlyWeatherCard(id) {
   return hourlyWeatherCard;
 }
 
+//creates card element for individual weather data for main day side sections
+//id for iteration, type = name of data type, measure = placeholder value
 function createSideContentCard(id, type, measure) {
   let detailsDiv = document.createElement("div");
   detailsDiv.className = "side-content";
@@ -66,16 +74,22 @@ function createSideContentCard(id, type, measure) {
   return detailsDiv;
 }
 
+//creates toggle switch element to change between imperial and metric units
+//currently not in use
 function createUnitSlider() {
   let unitSettings = document.createElement("div");
   unitSettings.className = "unit-settings";
+
   let measureUnit = document.createElement("span");
   measureUnit.id = "measure-unit";
   measureUnit.innerHTML = "Measurement Units:";
+
   let switchContainer = document.createElement("label");
   switchContainer.className = "switch";
+
   let checkBox = document.createElement("input");
   checkBox.type = "checkbox";
+
   let slider = document.createElement("span");
   slider.className = "slider round";
 
@@ -87,6 +101,7 @@ function createUnitSlider() {
   return unitSettings;
 }
 
+//creates current day element for the current day's weather data excluding hourly
 function mainDayBrief() {
   let mainDayBrief = document.createElement("div");
   mainDayBrief.id = "main-day-brief";
@@ -106,6 +121,7 @@ function mainDayBrief() {
   let temperature = document.createElement("span");
   temperature.id = "main-day-temperature";
   temperature.innerHTML = "17&#8451; / 23&#8451;";
+
   let weatherIcon = document.createElement("img");
   weatherIcon.src = lightRain;
   weatherIcon.id = "main-day-image";
@@ -119,27 +135,33 @@ function mainDayBrief() {
   return mainDayBrief;
 }
 
+//creates search bar element
 function searchContainer() {
   let searchContainer = document.createElement("div");
   searchContainer.className = "search-container";
+
   let searchBar = document.createElement("div");
   searchBar.className = "search-bar";
   let searchForm = document.createElement("div");
+
   searchForm.id = "search-bar-form";
   let searchInput = document.createElement("input");
   searchInput.type = "text";
   searchInput.placeholder = "Search...";
   searchInput.name = "search";
+  //event listener for the search bar to allow pressing the enter button to search
   searchInput.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       event.preventDefault();
       document.getElementById("search-button").click();
     }
   });
+
   let searchButton = document.createElement("button");
   searchButton.type = "submit";
   searchButton.id = "search-button";
   searchButton.innerHTML = "&#128269;";
+  //event listener for search button to initiate a location search
   searchButton.addEventListener("click", () => {
     searchBarListener(searchInput.value);
     searchInput.value = "";
@@ -153,6 +175,7 @@ function searchContainer() {
   return searchContainer;
 }
 
+//creates current day hourly elements container for hourly weather data
 function mainDayHourly() {
   let mainDayHourlyDiv = document.createElement("div");
   mainDayHourlyDiv.id = "main-day-hourly";
@@ -161,7 +184,7 @@ function mainDayHourly() {
   let hourlyWeather = document.createElement("div");
   hourlyWeather.id = "hourly-weather";
 
-  // let hourly = hourlyData;
+  //create a hourly card for each hour of the day
   for (let i = 0; i < 24; i++) {
     let id = "hourly" + "-" + i;
     hourlyWeather.appendChild(createHourlyWeatherCard(id));  
@@ -173,18 +196,7 @@ function mainDayHourly() {
   return mainDayHourlyDiv;
 }
 
-
-
-function addIcon() {
-  const listofIcons = document.getElementsByClassName("weather-icon");
-  Array.from(listofIcons).forEach((element) => {
-    element.src = lightRain;
-    console.log("yes");
-  });
-}
-
 export {
-  addIcon,
   createHourlyWeatherCard,
   createSideContentCard,
   createWeekDayWeatherCard,

@@ -1,16 +1,15 @@
 import {addToBody} from "./components/layout";
-import {addIcon} from "./components/weatherDayCard";
 import {weatherAPICall, forecastAPICall, restOfWeekData } from "./functions/weatherAPI";
 import "./styles/main.scss";
 
+//creates all HTML Dom Elements
+addToBody();
 
-console.log("1, 2 ,3");
-
+//api functions to call to retreive data from weatherapi.com
 weatherAPICall("Auckland");
 forecastAPICall("Auckland");
 restOfWeekData("Auckland");
-addToBody();
-addIcon();
+
 
 
 
