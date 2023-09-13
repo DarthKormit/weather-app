@@ -14,6 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _weatherDayCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weatherDayCard */ "./src/components/weatherDayCard.js");
 
+
+//creates full current day div with all left,middle and right side content containers
 function createMainDayDiv() {
   var mainDayDiv = document.createElement("div");
   mainDayDiv.className = "main-day-div";
@@ -22,6 +24,8 @@ function createMainDayDiv() {
   mainDayDiv.appendChild(createMainDayRight());
   document.body.appendChild(mainDayDiv);
 }
+
+//creates current day left side content container
 function createMainDayLeft() {
   var mainDayLeft = document.createElement("div");
   mainDayLeft.className = "main-day-left";
@@ -36,6 +40,8 @@ function createMainDayLeft() {
   mainDayLeft.appendChild(mainDayLeftGrid);
   return mainDayLeft;
 }
+
+//creates current day middle content container
 function createMainDayMiddle() {
   var mainDayMiddle = document.createElement("div");
   mainDayMiddle.className = "main-day-middle";
@@ -46,6 +52,8 @@ function createMainDayMiddle() {
 
   return mainDayMiddle;
 }
+
+//creates current day right side content container
 function createMainDayRight() {
   var mainDayRight = document.createElement("div");
   mainDayRight.className = "main-day-right";
@@ -53,22 +61,28 @@ function createMainDayRight() {
   mainDayRightGrid.id = "main-day-right-grid";
   mainDayRightGrid.appendChild((0,_weatherDayCard__WEBPACK_IMPORTED_MODULE_0__.createSideContentCard)("co", "CO:", "8"));
   mainDayRightGrid.appendChild((0,_weatherDayCard__WEBPACK_IMPORTED_MODULE_0__.createSideContentCard)("ozone", "Ozone:", "10.5"));
-  mainDayRightGrid.appendChild((0,_weatherDayCard__WEBPACK_IMPORTED_MODULE_0__.createSideContentCard)("no2", "NO₂:", "11"));
-  mainDayRightGrid.appendChild((0,_weatherDayCard__WEBPACK_IMPORTED_MODULE_0__.createSideContentCard)("so2", "SO₂:", "11"));
+  mainDayRightGrid.appendChild((0,_weatherDayCard__WEBPACK_IMPORTED_MODULE_0__.createSideContentCard)("no2", "NO2:", "11"));
+  mainDayRightGrid.appendChild((0,_weatherDayCard__WEBPACK_IMPORTED_MODULE_0__.createSideContentCard)("so2", "SO2:", "11"));
   mainDayRightGrid.appendChild((0,_weatherDayCard__WEBPACK_IMPORTED_MODULE_0__.createSideContentCard)("pm", "PM 2.5/10:", "11"));
   mainDayRightGrid.appendChild((0,_weatherDayCard__WEBPACK_IMPORTED_MODULE_0__.createSideContentCard)("epa-index", "EPA Index:", "11"));
   mainDayRight.appendChild(mainDayRightGrid);
   return mainDayRight;
 }
+
+//creates rest of the week content container
 function createRestOfWeek() {
   var restOfWeekDiv = document.createElement("div");
   restOfWeekDiv.className = "rest-of-week";
   restOfWeekDiv.id = "rest-week-container";
+
+  //creates cards for 2 days due to free api limitiations
   for (var i = 0; i < 2; i++) {
     restOfWeekDiv.appendChild((0,_weatherDayCard__WEBPACK_IMPORTED_MODULE_0__.createWeekDayWeatherCard)(i));
   }
   document.body.appendChild(restOfWeekDiv);
 }
+
+//creates all HTML DOM Elements, to be used as inital contruction of app
 function addToBody() {
   createMainDayDiv();
   createRestOfWeek();
@@ -85,7 +99,6 @@ function addToBody() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "addIcon": () => (/* binding */ addIcon),
 /* harmony export */   "createHourlyWeatherCard": () => (/* binding */ createHourlyWeatherCard),
 /* harmony export */   "createSideContentCard": () => (/* binding */ createSideContentCard),
 /* harmony export */   "createUnitSlider": () => (/* binding */ createUnitSlider),
@@ -96,13 +109,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _assets_lightRain_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/lightRain.png */ "./src/assets/lightRain.png");
 /* harmony import */ var _functions_searchBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../functions/searchBar */ "./src/functions/searchBar.js");
-/* harmony import */ var _functions_weatherAPI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../functions/weatherAPI */ "./src/functions/weatherAPI.js");
 
 
 
+//creates card element for the rest of the week days
 function createWeekDayWeatherCard(id) {
   var weekDayWeatherCard = document.createElement("div");
   weekDayWeatherCard.className = "weather-day-card";
+  //id used for element selection of individual cards
   weekDayWeatherCard.id = "rest-week-" + id;
   var daySpan = document.createElement("span");
   daySpan.innerHTML = "Saturday";
@@ -118,10 +132,12 @@ function createWeekDayWeatherCard(id) {
   weekDayWeatherCard.appendChild(weatherIcon);
   return weekDayWeatherCard;
 }
+
+//creates card element for hourly weather data
 function createHourlyWeatherCard(id) {
-  console.log();
   var hourlyWeatherCard = document.createElement("div");
   hourlyWeatherCard.className = "weather-day-hourly-card";
+  //id used for element selection of individual cards
   hourlyWeatherCard.id = id;
   var hourSpan = document.createElement("span");
   hourSpan.innerHTML = "1PM";
@@ -137,6 +153,9 @@ function createHourlyWeatherCard(id) {
   hourlyWeatherCard.appendChild(weatherIcon);
   return hourlyWeatherCard;
 }
+
+//creates card element for individual weather data for main day side sections
+//id for iteration, type = name of data type, measure = placeholder value
 function createSideContentCard(id, type, measure) {
   var detailsDiv = document.createElement("div");
   detailsDiv.className = "side-content";
@@ -149,6 +168,9 @@ function createSideContentCard(id, type, measure) {
   detailsDiv.appendChild(details);
   return detailsDiv;
 }
+
+//creates toggle switch element to change between imperial and metric units
+//currently not in use
 function createUnitSlider() {
   var unitSettings = document.createElement("div");
   unitSettings.className = "unit-settings";
@@ -167,6 +189,8 @@ function createUnitSlider() {
   unitSettings.appendChild(switchContainer);
   return unitSettings;
 }
+
+//creates current day element for the current day's weather data excluding hourly
 function mainDayBrief() {
   var mainDayBrief = document.createElement("div");
   mainDayBrief.id = "main-day-brief";
@@ -192,6 +216,8 @@ function mainDayBrief() {
   mainDayBrief.appendChild(weatherIcon);
   return mainDayBrief;
 }
+
+//creates search bar element
 function searchContainer() {
   var searchContainer = document.createElement("div");
   searchContainer.className = "search-container";
@@ -203,11 +229,21 @@ function searchContainer() {
   searchInput.type = "text";
   searchInput.placeholder = "Search...";
   searchInput.name = "search";
+  //event listener for the search bar to allow pressing the enter button to search
+  searchInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("search-button").click();
+    }
+  });
   var searchButton = document.createElement("button");
   searchButton.type = "submit";
+  searchButton.id = "search-button";
   searchButton.innerHTML = "&#128269;";
+  //event listener for search button to initiate a location search
   searchButton.addEventListener("click", function () {
     (0,_functions_searchBar__WEBPACK_IMPORTED_MODULE_1__["default"])(searchInput.value);
+    searchInput.value = "";
   });
   searchContainer.appendChild(searchBar);
   searchBar.appendChild(searchForm);
@@ -215,6 +251,8 @@ function searchContainer() {
   searchForm.appendChild(searchButton);
   return searchContainer;
 }
+
+//creates current day hourly elements container for hourly weather data
 function mainDayHourly() {
   var mainDayHourlyDiv = document.createElement("div");
   mainDayHourlyDiv.id = "main-day-hourly";
@@ -223,7 +261,7 @@ function mainDayHourly() {
   var hourlyWeather = document.createElement("div");
   hourlyWeather.id = "hourly-weather";
 
-  // let hourly = hourlyData;
+  //create a hourly card for each hour of the day
   for (var i = 0; i < 24; i++) {
     var id = "hourly" + "-" + i;
     hourlyWeather.appendChild(createHourlyWeatherCard(id));
@@ -231,13 +269,6 @@ function mainDayHourly() {
   mainDayHourlyDiv.appendChild(hourlyTitle);
   mainDayHourlyDiv.appendChild(hourlyWeather);
   return mainDayHourlyDiv;
-}
-function addIcon() {
-  var listofIcons = document.getElementsByClassName("weather-icon");
-  Array.from(listofIcons).forEach(function (element) {
-    element.src = _assets_lightRain_png__WEBPACK_IMPORTED_MODULE_0__;
-    console.log("yes");
-  });
 }
 
 
@@ -255,6 +286,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _weatherAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weatherAPI */ "./src/functions/weatherAPI.js");
 
+
+//calls api functions to change HTML DOM Elements for new location
 function searchBarListener(input) {
   var location = input;
   (0,_weatherAPI__WEBPACK_IMPORTED_MODULE_0__.weatherAPICall)(location);
@@ -281,9 +314,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+//fetchs current day data and changes main day related HTML DOM Elements
 function weatherAPICall(_x) {
   return _weatherAPICall.apply(this, arguments);
-}
+} //fetchs current day hourly data and changes the hourly DOM Elements
 function _weatherAPICall() {
   _weatherAPICall = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(location) {
     var response, weatherData, date, options;
@@ -300,19 +334,23 @@ function _weatherAPICall() {
           return response.json();
         case 5:
           weatherData = _context.sent;
-          console.log(weatherData);
+          //changes the left side current time cards with their respective data
           document.getElementById("humidity").innerHTML = weatherData.current.humidity + " %";
           document.getElementById("wind-speed").innerHTML = weatherData.current.wind_kph + " kph";
           document.getElementById("wind-gust").innerHTML = weatherData.current.gust_kph + " kph";
           document.getElementById("uv").innerHTML = weatherData.current.uv + " ";
           document.getElementById("cloud-coverage").innerHTML = weatherData.current.cloud + " %";
           document.getElementById("pressure").innerHTML = weatherData.current.pressure_in + " mb";
+
+          //changes the right side current time cards with their respective data
           document.getElementById("co").innerHTML = weatherData.current.air_quality.co + " μg/m3";
           document.getElementById("ozone").innerHTML = weatherData.current.air_quality.o3 + " μg/m3";
           document.getElementById("no2").innerHTML = weatherData.current.air_quality.no2 + " μg/m3";
           document.getElementById("so2").innerHTML = weatherData.current.air_quality.so2 + " μg/m3";
           document.getElementById("pm").innerHTML = weatherData.current.air_quality.pm2_5 + "/" + weatherData.current.air_quality.pm10 + " μg/m3";
           document.getElementById("epa-index").innerHTML = weatherData.current.air_quality["us-epa-index"] + " ";
+
+          //changes the main day current time data excluding hourly data 
           document.getElementById("main-day-location").innerHTML = weatherData.location.name;
           date = new Date(weatherData.location.localtime);
           options = {
@@ -324,9 +362,9 @@ function _weatherAPICall() {
           document.getElementById("main-day-date").innerHTML = date.toLocaleDateString(undefined, options) + " " + weatherData.location.localtime.slice(-5);
           document.getElementById("main-day-weather").innerHTML = weatherData.current.condition.text;
           document.getElementById("main-day-temperature").innerHTML = weatherData.current.temp_c + "℃";
-          document.getElementById("main-day-image").src = "https://cdn.weatherapi.com/weather/64x64/day/122.png";
+          document.getElementById("main-day-image").src = weatherData.current.condition.icon;
           return _context.abrupt("return", weatherData);
-        case 27:
+        case 26:
         case "end":
           return _context.stop();
       }
@@ -336,7 +374,8 @@ function _weatherAPICall() {
 }
 function forecastAPICall(_x2) {
   return _forecastAPICall.apply(this, arguments);
-}
+} //fetchs weather data for the rest of the week
+//only 2 extra days can be used because currently using limited free version
 function _forecastAPICall() {
   _forecastAPICall = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(location) {
     var response, weatherForecastData, hourlyCards;
@@ -353,8 +392,10 @@ function _forecastAPICall() {
           return response.json();
         case 5:
           weatherForecastData = _context2.sent;
-          hourlyCards = document.getElementById("hourly-weather").childNodes;
+          //creates nodelist of all hourly cards
+          hourlyCards = document.getElementById("hourly-weather").childNodes; //iterates through the nodelist of hourly cards
           hourlyCards.forEach(function (node, hours) {
+            //creates nodelist of all child elements for each hourly card
             var cardNodes = node.childNodes;
             cardNodes[0].innerHTML = weatherForecastData.forecast.forecastday[0].hour[hours].time.slice(-5);
             cardNodes[1].innerHTML = "";
@@ -374,8 +415,7 @@ function _forecastAPICall() {
 }
 function restOfWeekData(_x3) {
   return _restOfWeekData.apply(this, arguments);
-} // "Humidity, Wind, Wind direction, Pressure, UV, Precipitation mm, "
-// "CO, Ozone, Nitrogen, Sulfur, Particulate, EPA Index"
+}
 function _restOfWeekData() {
   _restOfWeekData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(location) {
     var response, weatherForecastData, restOfWeekCards;
@@ -392,10 +432,13 @@ function _restOfWeekData() {
           return response.json();
         case 5:
           weatherForecastData = _context3.sent;
-          restOfWeekCards = document.getElementById("rest-week-container").childNodes;
+          //creates nodelist of all rest of the week cards
+          restOfWeekCards = document.getElementById("rest-week-container").childNodes; //try catch block to catch the error when there is no data for the rest of the week
           try {
             restOfWeekCards.forEach(function (node, day) {
+              //creates nodelist of all child elements for a rest of the week card
               var restWeekNodes = node.childNodes;
+              //sets the initial day to 1 and not 0 to make sure it doesn't include the current day
               day++;
               var date = new Date(weatherForecastData.forecast.forecastday[day].date);
               var options = {
@@ -445,11 +488,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../../../../../../src/assets/background-6.jpg */ "./src/assets/background-6.jpg"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../../../../../../src/assets/back3.jpg */ "./src/assets/back3.jpg"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\nbody {\n  background-color: #08410c;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center center;\n  font-family: \"Roboto\", sans-serif;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100vh;\n  overflow: hidden;\n  margin: 0;\n  padding: 20px;\n  min-width: 50vw;\n}\n\nh1 {\n  margin: 0;\n  opacity: 0.5;\n  letter-spacing: 2px;\n}\n\n.rest-of-week {\n  display: grid;\n  width: 95vw;\n  justify-content: space-between;\n  margin: auto;\n  position: relative;\n  grid-gap: 1rem;\n  grid-template-rows: auto;\n  grid-template-columns: 1fr 1fr;\n  margin-top: 20px;\n}\n\n.main-day-middle {\n  grid-column: 2/4;\n}\n\n.main-day-left {\n  float: left;\n  grid-column: 1/2;\n}\n\n.main-day-right {\n  float: right;\n  grid-column: 4/5;\n}\n\n.main-day-div {\n  display: grid;\n  width: 95vw;\n  max-height: fit-content;\n  margin: auto;\n  justify-content: space-between;\n  grid-template-columns: 1fr minmax(150px, min-content) minmax(150px, min-content) 1fr;\n  position: relative;\n  grid-template-rows: 1fr;\n  grid-gap: 25px;\n}\n\n.main-day-card {\n  width: 47.5%;\n}\n\n.main-day-card > span {\n  justify-content: center;\n}\n\n.main-day-card-left {\n  width: 23.75%;\n  float: left;\n}\n\n#main-day-left-grid, #main-day-right-grid {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;\n  gap: auto;\n}\n\n.side-content {\n  display: block;\n  justify-content: center;\n  margin: 0;\n  padding: 10px;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(8px);\n  border-radius: 6px;\n  border: 1px solid rgba(145, 145, 145, 0.25);\n  margin-bottom: 3%;\n  /* word-break: break-all; */\n}\n\n.main-day-card-right {\n  width: 23.75%;\n  float: right;\n}\n\n.main-day-middle, .main-day-left, .main-day-right, .weather-day-card, .weather-day-hourly-card {\n  display: block;\n  justify-content: center;\n  margin: 0;\n  padding: 15px;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(8px);\n  border-radius: 6px;\n  border: 1px solid rgba(145, 145, 145, 0.25);\n  /* word-break: break-all; */\n  position: relative;\n}\n\n#main-day-brief {\n  display: block;\n  justify-content: center;\n  align-items: center;\n}\n\n#main-day-brief > span {\n  justify-content: center;\n}\n\n#main-day-location {\n  max-height: fit-content;\n  font-size: 32px;\n}\n\n#main-day-date {\n  font-size: 28px;\n}\n\n#main-day-weather {\n  font-size: 26px;\n}\n\n#main-day-temperature {\n  font-size: 24px;\n}\n\n#hourly-weather {\n  display: flex;\n  justify-content: space-between;\n  max-width: 100%;\n  padding-top: 5px;\n  margin: 0;\n  grid-gap: 5px;\n  grid-template-rows: auto;\n  grid-auto-flow: column;\n  overflow-x: auto;\n  max-width: 50vw;\n}\n\n.weather-day-hourly-card {\n  min-width: fit-content;\n}\n\n.weather-day-hourly-card > span {\n  justify-content: center;\n}\n\n.weather-day-hourly-card > img {\n  max-width: 50px;\n}\n\n#main-day-hourly {\n  display: block;\n  justify-content: center;\n  margin: 0;\n  margin-top: 10%;\n}\n\n#main-day-hourly-weather {\n  display: flex;\n  justify-content: space-between;\n  max-width: 100%;\n  padding-top: 5px;\n  margin: 0;\n  grid-gap: 5px;\n  grid-template-rows: auto;\n  grid-auto-flow: column;\n  overflow-x: auto;\n}\n\nspan {\n  display: flex;\n  margin: 0;\n  color: white;\n  font-size: 20px;\n  /* height: auto;\n  width: 100%;\n  max-width: 100%; */\n  word-wrap: break-word;\n  justify-content: center;\n  text-transform: capitalize;\n}\n\nimg {\n  display: flex;\n  width: 100%;\n  max-width: 100px;\n  /* height: auto; */\n  justify-self: center;\n  margin: auto;\n  filter: brightness(0) invert(1);\n}\n\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n  align-self: center;\n}\n\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: 0.4s;\n  transition: 0.4s;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: 0.4s;\n  transition: 0.4s;\n}\n\ninput:checked + .slider {\n  background-color: #2196F3;\n}\n\ninput:focus + .slider {\n  box-shadow: 0 0 1px #2196F3;\n}\n\ninput:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  -ms-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\n  border-radius: 34px;\n}\n\n.slider.round:before {\n  border-radius: 50%;\n}\n\n#measure-unit {\n  justify-content: center;\n}\n\n.unit-settings {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.search-container {\n  display: flex;\n  justify-content: center;\n  width: 100%;\n}\n\n.search-bar {\n  display: flex;\n  float: right;\n  justify-content: center;\n  /* height: 4rem; */\n  margin: auto;\n  position: relative;\n  border-bottom: solid 2px rgb(255, 255, 255);\n}\n\ninput[type=text] {\n  padding: 9px;\n  padding-bottom: 2px;\n  max-height: 100%;\n  font-size: 24px;\n  border: none;\n  background-color: transparent;\n  color: white;\n}\n\ninput:focus {\n  border: none;\n  outline: none;\n}\n\n.search-container button {\n  float: right;\n  /* padding: 6px 10px; */\n  background: transparent;\n  font-size: 17px;\n  border: none;\n  cursor: pointer;\n}\n\n#search-bar-form {\n  display: flex;\n  height: 100%;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: #08410c;\r\n  background-image: url(/src/assets/background-6.jpg);\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  background-position: center center;\r\n  font-family: \"Roboto\", sans-serif;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  margin: 0;\r\n  padding: 20px;\r\n  min-width: 50vw;\r\n}\r\n\r\nh1 {\r\n  margin: 0;\r\n  opacity: 0.5;\r\n  letter-spacing: 2px;\r\n}\r\n.rest-of-week {\r\n  display: grid;\r\n  width: 95vw;\r\n  justify-content: space-between;\r\n  margin: auto;\r\n  position: relative;\r\n  grid-gap: 1rem;\r\n  grid-template-rows: auto;\r\n  grid-template-columns: 1fr 1fr;\r\n  margin-top: 20px;\r\n}\r\n\r\n.main-day-middle {\r\n  grid-column: 2/4;\r\n}\r\n\r\n.main-day-left {\r\n  float: left;\r\n  grid-column: 1/2;\r\n}\r\n\r\n.main-day-right {\r\n  float: right;\r\n  grid-column: 4/5;\r\n}\r\n\r\n.main-day-div {\r\n  display: grid;\r\n  width: 95vw;\r\n  max-height: fit-content;\r\n  margin: auto;\r\n  justify-content: space-between;\r\n  grid-template-columns: 1fr minmax(150px,min-content) minmax(150px,min-content) 1fr;\r\n  position: relative;\r\n  grid-template-rows: 1fr;\r\n  grid-gap: 25px;\r\n}\r\n\r\n.main-day-card{\r\n  width: 47.5%;\r\n}\r\n\r\n.main-day-card > span{\r\n  justify-content: center;\r\n}\r\n\r\n.main-day-card-left{\r\n  width: 23.75%;\r\n  float: left;\r\n}\r\n\r\n#main-day-left-grid, #main-day-right-grid{\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;\r\n  gap: auto;\r\n}\r\n\r\n.side-content{\r\n  display: block;\r\n  justify-content: center;\r\n  margin: 0;\r\n  padding: 10px;\r\n  -webkit-backdrop-filter: blur(10px);\r\n  backdrop-filter: blur(8px);\r\n  border-radius: 6px;\r\n  border: 1px solid rgba(145, 145, 145, 0.25);\r\n  margin-bottom: 3%;\r\n  /* word-break: break-all; */\r\n}\r\n\r\n.main-day-card-right{\r\n  width: 23.75%;\r\n  float: right;\r\n}\r\n\r\n.weather-day-card {\r\n\r\n}\r\n\r\n.main-day-middle, .main-day-left, .main-day-right, .weather-day-card, .weather-day-hourly-card{\r\n  display: block;\r\n  justify-content: center;\r\n  margin: 0;\r\n  padding: 15px;\r\n  -webkit-backdrop-filter: blur(10px);\r\n  backdrop-filter: blur(8px);\r\n  border-radius: 6px;\r\n  border: 1px solid rgba(145, 145, 145, 0.25);\r\n  /* word-break: break-all; */\r\n  position: relative;\r\n}\r\n\r\n#main-day-brief{\r\n  display: block;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#main-day-brief > span{\r\n  justify-content: center;\r\n}\r\n\r\n#main-day-location {\r\n  max-height: fit-content;\r\n  font-size: 32px;\r\n}\r\n#main-day-date {\r\n  font-size: 28px;\r\n}\r\n#main-day-weather {\r\n  font-size: 26px;\r\n}\r\n#main-day-temperature {\r\n  font-size: 24px;\r\n}\r\n\r\n#hourly-weather{\r\n  display: flex;\r\n  justify-content: space-between;\r\n  max-width: 100%;\r\n  padding-top: 5px;\r\n  margin: 0;\r\n  grid-gap: 5px;\r\n  grid-template-rows: auto;\r\n  grid-auto-flow: column;\r\n  overflow-x: auto;\r\n  max-width: 50vw;\r\n}\r\n\r\n.weather-day-hourly-card{\r\n  min-width: fit-content;\r\n  \r\n}\r\n\r\n.weather-day-hourly-card > span{\r\n  justify-content: center;\r\n}\r\n\r\n.weather-day-hourly-card > img{\r\n  max-width: 50px;\r\n}\r\n\r\n#main-day-hourly{\r\n  display: block;\r\n  justify-content: center;\r\n  margin: 0;\r\n  margin-top: 10%;\r\n}\r\n\r\n#main-day-hourly-weather{\r\n  display: flex;\r\n  justify-content: space-between;\r\n  max-width: 100%;\r\n  padding-top: 5px;\r\n  margin: 0;\r\n  grid-gap: 5px;\r\n  grid-template-rows: auto;\r\n  grid-auto-flow: column;\r\n  overflow-x: auto;\r\n}\r\n\r\nspan {\r\n  display: flex;\r\n  margin: 0;\r\n  color: white;\r\n  font-size: 20px;\r\n  /* height: auto;\r\n  width: 100%;\r\n  max-width: 100%; */\r\n  word-wrap: break-word;\r\n  justify-content: center;\r\n  text-transform: capitalize;\r\n}\r\n\r\n// span {text-transform: lowercase; } \r\n\r\n// span:first-letter{ text-transform: uppercase; }\r\n\r\nimg {\r\n  display: flex;\r\n  width: 100%;\r\n  max-width: 100px;\r\n  /* height: auto; */\r\n  justify-self: center;\r\n  margin: auto;\r\n  filter: brightness(0) invert(1);\r\n}\r\n\r\n\r\n.switch {\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 60px;\r\n  height: 34px;\r\n  align-self: center;\r\n}\r\n\r\n.switch input { \r\n  opacity: 0;\r\n  width: 0;\r\n  height: 0;\r\n}\r\n\r\n.slider {\r\n  position: absolute;\r\n  cursor: pointer;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: #ccc;\r\n  -webkit-transition: .4s;\r\n  transition: .4s;\r\n}\r\n\r\n.slider:before {\r\n  position: absolute;\r\n  content: \"\";\r\n  height: 26px;\r\n  width: 26px;\r\n  left: 4px;\r\n  bottom: 4px;\r\n  background-color: white;\r\n  -webkit-transition: .4s;\r\n  transition: .4s;\r\n}\r\n\r\ninput:checked + .slider {\r\n  background-color: #2196F3;\r\n}\r\n\r\ninput:focus + .slider {\r\n  box-shadow: 0 0 1px #2196F3;\r\n}\r\n\r\ninput:checked + .slider:before {\r\n  -webkit-transform: translateX(26px);\r\n  -ms-transform: translateX(26px);\r\n  transform: translateX(26px);\r\n}\r\n\r\n/* Rounded sliders */\r\n.slider.round {\r\n  border-radius: 34px;\r\n}\r\n\r\n.slider.round:before {\r\n  border-radius: 50%;\r\n}\r\n\r\n#measure-unit{\r\n  justify-content: center;\r\n}\r\n\r\n.unit-settings{\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n}\r\n\r\n.search-container{\r\n  display: flex;\r\n  justify-content: center;\r\n  width: 100%;\r\n}\r\n.search-bar {\r\n  display: flex;\r\n  float: right;\r\n  justify-content: center;\r\n  /* height: 4rem; */\r\n  margin: auto;\r\n  position: relative;\r\n  border-bottom: solid 2px rgb(255, 255, 255);\r\n}\r\n\r\ninput[type=\"text\"] {\r\n  padding: 9px;\r\n  padding-bottom: 2px;\r\n  max-height: 100%;\r\n  font-size: 24px;\r\n  border: none;\r\n  background-color: transparent;\r\n  color: white;\r\n}\r\n\r\ninput:focus {\r\n  border: none;\r\n  outline: none;\r\n}\r\n\r\n.search-container button {\r\n  float: right;\r\n  /* padding: 6px 10px; */\r\n  background: transparent;\r\n  font-size: 17px;\r\n  border: none;\r\n  cursor: pointer;\r\n}\r\n\r\n#search-bar-form {\r\n  display: flex;\r\n  height: 100%;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\nbody {\n  background-color: #08410c;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center center;\n  font-family: \"Roboto\", sans-serif;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100vh;\n  overflow: hidden;\n  margin: 0;\n  padding: 20px;\n  min-width: 50vw;\n}\n\nh1 {\n  margin: 0;\n  opacity: 0.5;\n  letter-spacing: 2px;\n}\n\n.rest-of-week {\n  display: grid;\n  width: 95vw;\n  justify-content: space-between;\n  margin: auto;\n  position: relative;\n  grid-gap: 1rem;\n  grid-template-rows: auto;\n  grid-template-columns: 1fr 1fr;\n  margin-top: 20px;\n}\n\n.main-day-middle {\n  grid-column: 2/4;\n}\n\n.main-day-left {\n  float: left;\n  grid-column: 1/2;\n}\n\n.main-day-right {\n  float: right;\n  grid-column: 4/5;\n}\n\n.main-day-div {\n  display: grid;\n  width: 95vw;\n  max-height: fit-content;\n  margin: auto;\n  justify-content: space-between;\n  grid-template-columns: 1fr minmax(150px, min-content) minmax(150px, min-content) 1fr;\n  position: relative;\n  grid-template-rows: 1fr;\n  grid-gap: 25px;\n}\n\n.main-day-card {\n  width: 47.5%;\n}\n\n.main-day-card > span {\n  justify-content: center;\n}\n\n.main-day-card-left {\n  width: 23.75%;\n  float: left;\n}\n\n#main-day-left-grid, #main-day-right-grid {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;\n  gap: auto;\n}\n\n.side-content {\n  display: block;\n  justify-content: center;\n  margin: 0;\n  padding: 10px;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(4px);\n  border-radius: 6px;\n  border: 1px solid rgba(145, 145, 145, 0.25);\n  margin-bottom: 3%;\n  /* word-break: break-all; */\n}\n\n.main-day-card-right {\n  width: 23.75%;\n  float: right;\n}\n\n.main-day-middle, .main-day-left, .main-day-right, .weather-day-card, .weather-day-hourly-card {\n  display: block;\n  justify-content: center;\n  margin: 0;\n  padding: 15px;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(4px);\n  border-radius: 6px;\n  border: 1px solid rgba(145, 145, 145, 0.25);\n  /* word-break: break-all; */\n  position: relative;\n}\n\n#main-day-brief {\n  display: block;\n  justify-content: center;\n  align-items: center;\n}\n\n#main-day-brief > span {\n  justify-content: center;\n}\n\n#main-day-location {\n  max-height: fit-content;\n  font-size: 32px;\n}\n\n#main-day-date {\n  font-size: 28px;\n}\n\n#main-day-weather {\n  font-size: 26px;\n}\n\n#main-day-temperature {\n  font-size: 24px;\n}\n\n#hourly-weather {\n  display: flex;\n  justify-content: space-between;\n  max-width: 100%;\n  padding-top: 5px;\n  margin: 0;\n  grid-gap: 5px;\n  grid-template-rows: auto;\n  grid-auto-flow: column;\n  overflow-x: auto;\n  max-width: 50vw;\n}\n\n.weather-day-hourly-card {\n  min-width: fit-content;\n}\n\n.weather-day-hourly-card > span {\n  justify-content: center;\n}\n\n.weather-day-hourly-card > img {\n  max-width: 50px;\n}\n\n#main-day-hourly {\n  display: block;\n  justify-content: center;\n  margin: 0;\n  margin-top: 10%;\n}\n\n#main-day-hourly-weather {\n  display: flex;\n  justify-content: space-between;\n  max-width: 100%;\n  padding-top: 5px;\n  margin: 0;\n  grid-gap: 5px;\n  grid-template-rows: auto;\n  grid-auto-flow: column;\n  overflow-x: auto;\n}\n\nspan {\n  display: flex;\n  margin: 0;\n  color: white;\n  font-size: 20px;\n  /* height: auto;\n  width: 100%;\n  max-width: 100%; */\n  word-wrap: break-word;\n  justify-content: center;\n  text-transform: capitalize;\n}\n\nimg {\n  display: flex;\n  width: 100%;\n  max-width: 100px;\n  /* height: auto; */\n  justify-self: center;\n  margin: auto;\n  filter: brightness(0) invert(1);\n}\n\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n  align-self: center;\n}\n\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: 0.4s;\n  transition: 0.4s;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: 0.4s;\n  transition: 0.4s;\n}\n\ninput:checked + .slider {\n  background-color: #2196F3;\n}\n\ninput:focus + .slider {\n  box-shadow: 0 0 1px #2196F3;\n}\n\ninput:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  -ms-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\n  border-radius: 34px;\n}\n\n.slider.round:before {\n  border-radius: 50%;\n}\n\n#measure-unit {\n  justify-content: center;\n}\n\n.unit-settings {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.search-container {\n  display: flex;\n  justify-content: center;\n  width: 100%;\n}\n\n.search-bar {\n  display: flex;\n  float: right;\n  justify-content: center;\n  /* height: 4rem; */\n  margin: auto;\n  position: relative;\n  border-bottom: solid 2px rgb(255, 255, 255);\n}\n\ninput[type=text] {\n  padding: 9px;\n  padding-bottom: 2px;\n  max-height: 100%;\n  font-size: 24px;\n  border: none;\n  background-color: transparent;\n  color: white;\n}\n\ninput:focus {\n  border: none;\n  outline: none;\n}\n\n.search-container button {\n  float: right;\n  /* padding: 6px 10px; */\n  background: transparent;\n  font-size: 17px;\n  border: none;\n  cursor: pointer;\n}\n\n#search-bar-form {\n  display: flex;\n  height: 100%;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA;EACE,sBAAA;AACF;;AAEA;EACE,yBAAA;EACA,yDAAA;EACA,4BAAA;EACA,sBAAA;EACA,kCAAA;EACA,iCAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;EACA,aAAA;EACA,gBAAA;EACA,SAAA;EACA,aAAA;EACA,eAAA;AACF;;AAEA;EACE,SAAA;EACA,YAAA;EACA,mBAAA;AACF;;AACA;EACE,aAAA;EACA,WAAA;EACA,8BAAA;EACA,YAAA;EACA,kBAAA;EACA,cAAA;EACA,wBAAA;EACA,8BAAA;EACA,gBAAA;AAEF;;AACA;EACE,gBAAA;AAEF;;AACA;EACE,WAAA;EACA,gBAAA;AAEF;;AACA;EACE,YAAA;EACA,gBAAA;AAEF;;AACA;EACE,aAAA;EACA,WAAA;EACA,uBAAA;EACA,YAAA;EACA,8BAAA;EACA,oFAAA;EACA,kBAAA;EACA,uBAAA;EACA,cAAA;AAEF;;AACA;EACE,YAAA;AAEF;;AACA;EACE,uBAAA;AAEF;;AACA;EACE,aAAA;EACA,WAAA;AAEF;;AACA;EACE,aAAA;EACA,0BAAA;EACA,2CAAA;EACA,SAAA;AAEF;;AACA;EACE,cAAA;EACA,uBAAA;EACA,SAAA;EACA,aAAA;EACA,mCAAA;EACA,0BAAA;EACA,kBAAA;EACA,2CAAA;EACA,iBAAA;EACA,2BAAA;AAEF;;AACA;EACE,aAAA;EACA,YAAA;AAEF;;AACA;EACE,cAAA;EACA,uBAAA;EACA,SAAA;EACA,aAAA;EACA,mCAAA;EACA,0BAAA;EACA,kBAAA;EACA,2CAAA;EACA,2BAAA;EACA,kBAAA;AAEF;;AACA;EACE,cAAA;EACA,uBAAA;EACA,mBAAA;AAEF;;AACA;EACE,uBAAA;AAEF;;AACA;EACE,uBAAA;EACA,eAAA;AAEF;;AAAA;EACE,eAAA;AAGF;;AADA;EACE,eAAA;AAIF;;AAFA;EACE,eAAA;AAKF;;AAFA;EACE,aAAA;EACA,8BAAA;EACA,eAAA;EACA,gBAAA;EACA,SAAA;EACA,aAAA;EACA,wBAAA;EACA,sBAAA;EACA,gBAAA;EACA,eAAA;AAKF;;AAFA;EACE,sBAAA;AAKF;;AADA;EACE,uBAAA;AAIF;;AADA;EACE,eAAA;AAIF;;AADA;EACE,cAAA;EACA,uBAAA;EACA,SAAA;EACA,eAAA;AAIF;;AADA;EACE,aAAA;EACA,8BAAA;EACA,eAAA;EACA,gBAAA;EACA,SAAA;EACA,aAAA;EACA,wBAAA;EACA,sBAAA;EACA,gBAAA;AAIF;;AADA;EACE,aAAA;EACA,SAAA;EACA,YAAA;EACA,eAAA;EACA;;oBAAA;EAGA,qBAAA;EACA,uBAAA;EACA,0BAAA;AAIF;;AADA;EACE,aAAA;EACA,WAAA;EACA,gBAAA;EACA,kBAAA;EACA,oBAAA;EACA,YAAA;EACA,+BAAA;AAIF;;AAAA;EACE,kBAAA;EACA,qBAAA;EACA,WAAA;EACA,YAAA;EACA,kBAAA;AAGF;;AAAA;EACE,UAAA;EACA,QAAA;EACA,SAAA;AAGF;;AAAA;EACE,kBAAA;EACA,eAAA;EACA,MAAA;EACA,OAAA;EACA,QAAA;EACA,SAAA;EACA,sBAAA;EACA,wBAAA;EACA,gBAAA;AAGF;;AAAA;EACE,kBAAA;EACA,WAAA;EACA,YAAA;EACA,WAAA;EACA,SAAA;EACA,WAAA;EACA,uBAAA;EACA,wBAAA;EACA,gBAAA;AAGF;;AAAA;EACE,yBAAA;AAGF;;AAAA;EACE,2BAAA;AAGF;;AAAA;EACE,mCAAA;EACA,+BAAA;EACA,2BAAA;AAGF;;AAAA,oBAAA;AACA;EACE,mBAAA;AAGF;;AAAA;EACE,kBAAA;AAGF;;AAAA;EACE,uBAAA;AAGF;;AAAA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;AAGF;;AAAA;EACE,aAAA;EACA,uBAAA;EACA,WAAA;AAGF;;AADA;EACE,aAAA;EACA,YAAA;EACA,uBAAA;EACA,kBAAA;EACA,YAAA;EACA,kBAAA;EACA,2CAAA;AAIF;;AADA;EACE,YAAA;EACA,mBAAA;EACA,gBAAA;EACA,eAAA;EACA,YAAA;EACA,6BAAA;EACA,YAAA;AAIF;;AADA;EACE,YAAA;EACA,aAAA;AAIF;;AADA;EACE,YAAA;EACA,uBAAA;EACA,uBAAA;EACA,eAAA;EACA,YAAA;EACA,eAAA;AAIF;;AADA;EACE,aAAA;EACA,YAAA;AAIF","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: #08410c;\r\n  background-image: url(/src/assets/back3.jpg);\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  background-position: center center;\r\n  font-family: \"Roboto\", sans-serif;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  margin: 0;\r\n  padding: 20px;\r\n  min-width: 50vw;\r\n}\r\n\r\nh1 {\r\n  margin: 0;\r\n  opacity: 0.5;\r\n  letter-spacing: 2px;\r\n}\r\n.rest-of-week {\r\n  display: grid;\r\n  width: 95vw;\r\n  justify-content: space-between;\r\n  margin: auto;\r\n  position: relative;\r\n  grid-gap: 1rem;\r\n  grid-template-rows: auto;\r\n  grid-template-columns: 1fr 1fr;\r\n  margin-top: 20px;\r\n}\r\n\r\n.main-day-middle {\r\n  grid-column: 2/4;\r\n}\r\n\r\n.main-day-left {\r\n  float: left;\r\n  grid-column: 1/2;\r\n}\r\n\r\n.main-day-right {\r\n  float: right;\r\n  grid-column: 4/5;\r\n}\r\n\r\n.main-day-div {\r\n  display: grid;\r\n  width: 95vw;\r\n  max-height: fit-content;\r\n  margin: auto;\r\n  justify-content: space-between;\r\n  grid-template-columns: 1fr minmax(150px,min-content) minmax(150px,min-content) 1fr;\r\n  position: relative;\r\n  grid-template-rows: 1fr;\r\n  grid-gap: 25px;\r\n}\r\n\r\n.main-day-card{\r\n  width: 47.5%;\r\n}\r\n\r\n.main-day-card > span{\r\n  justify-content: center;\r\n}\r\n\r\n.main-day-card-left{\r\n  width: 23.75%;\r\n  float: left;\r\n}\r\n\r\n#main-day-left-grid, #main-day-right-grid{\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;\r\n  gap: auto;\r\n}\r\n\r\n.side-content{\r\n  display: block;\r\n  justify-content: center;\r\n  margin: 0;\r\n  padding: 10px;\r\n  -webkit-backdrop-filter: blur(10px);\r\n  backdrop-filter: blur(4px);\r\n  border-radius: 6px;\r\n  border: 1px solid rgba(145, 145, 145, 0.25);\r\n  margin-bottom: 3%;\r\n  /* word-break: break-all; */\r\n}\r\n\r\n.main-day-card-right{\r\n  width: 23.75%;\r\n  float: right;\r\n}\r\n\r\n.main-day-middle, .main-day-left, .main-day-right, .weather-day-card, .weather-day-hourly-card{\r\n  display: block;\r\n  justify-content: center;\r\n  margin: 0;\r\n  padding: 15px;\r\n  -webkit-backdrop-filter: blur(10px);\r\n  backdrop-filter: blur(4px);\r\n  border-radius: 6px;\r\n  border: 1px solid rgba(145, 145, 145, 0.25);\r\n  /* word-break: break-all; */\r\n  position: relative;\r\n}\r\n\r\n#main-day-brief{\r\n  display: block;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#main-day-brief > span{\r\n  justify-content: center;\r\n}\r\n\r\n#main-day-location {\r\n  max-height: fit-content;\r\n  font-size: 32px;\r\n}\r\n#main-day-date {\r\n  font-size: 28px;\r\n}\r\n#main-day-weather {\r\n  font-size: 26px;\r\n}\r\n#main-day-temperature {\r\n  font-size: 24px;\r\n}\r\n\r\n#hourly-weather{\r\n  display: flex;\r\n  justify-content: space-between;\r\n  max-width: 100%;\r\n  padding-top: 5px;\r\n  margin: 0;\r\n  grid-gap: 5px;\r\n  grid-template-rows: auto;\r\n  grid-auto-flow: column;\r\n  overflow-x: auto;\r\n  max-width: 50vw;\r\n}\r\n\r\n.weather-day-hourly-card{\r\n  min-width: fit-content;\r\n  \r\n}\r\n\r\n.weather-day-hourly-card > span{\r\n  justify-content: center;\r\n}\r\n\r\n.weather-day-hourly-card > img{\r\n  max-width: 50px;\r\n}\r\n\r\n#main-day-hourly{\r\n  display: block;\r\n  justify-content: center;\r\n  margin: 0;\r\n  margin-top: 10%;\r\n}\r\n\r\n#main-day-hourly-weather{\r\n  display: flex;\r\n  justify-content: space-between;\r\n  max-width: 100%;\r\n  padding-top: 5px;\r\n  margin: 0;\r\n  grid-gap: 5px;\r\n  grid-template-rows: auto;\r\n  grid-auto-flow: column;\r\n  overflow-x: auto;\r\n}\r\n\r\nspan {\r\n  display: flex;\r\n  margin: 0;\r\n  color: white;\r\n  font-size: 20px;\r\n  /* height: auto;\r\n  width: 100%;\r\n  max-width: 100%; */\r\n  word-wrap: break-word;\r\n  justify-content: center;\r\n  text-transform: capitalize;\r\n}\r\n\r\nimg {\r\n  display: flex;\r\n  width: 100%;\r\n  max-width: 100px;\r\n  /* height: auto; */\r\n  justify-self: center;\r\n  margin: auto;\r\n  filter: brightness(0) invert(1);\r\n}\r\n\r\n\r\n.switch {\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 60px;\r\n  height: 34px;\r\n  align-self: center;\r\n}\r\n\r\n.switch input { \r\n  opacity: 0;\r\n  width: 0;\r\n  height: 0;\r\n}\r\n\r\n.slider {\r\n  position: absolute;\r\n  cursor: pointer;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: #ccc;\r\n  -webkit-transition: .4s;\r\n  transition: .4s;\r\n}\r\n\r\n.slider:before {\r\n  position: absolute;\r\n  content: \"\";\r\n  height: 26px;\r\n  width: 26px;\r\n  left: 4px;\r\n  bottom: 4px;\r\n  background-color: white;\r\n  -webkit-transition: .4s;\r\n  transition: .4s;\r\n}\r\n\r\ninput:checked + .slider {\r\n  background-color: #2196F3;\r\n}\r\n\r\ninput:focus + .slider {\r\n  box-shadow: 0 0 1px #2196F3;\r\n}\r\n\r\ninput:checked + .slider:before {\r\n  -webkit-transform: translateX(26px);\r\n  -ms-transform: translateX(26px);\r\n  transform: translateX(26px);\r\n}\r\n\r\n/* Rounded sliders */\r\n.slider.round {\r\n  border-radius: 34px;\r\n}\r\n\r\n.slider.round:before {\r\n  border-radius: 50%;\r\n}\r\n\r\n#measure-unit{\r\n  justify-content: center;\r\n}\r\n\r\n.unit-settings{\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n}\r\n\r\n.search-container{\r\n  display: flex;\r\n  justify-content: center;\r\n  width: 100%;\r\n}\r\n.search-bar {\r\n  display: flex;\r\n  float: right;\r\n  justify-content: center;\r\n  /* height: 4rem; */\r\n  margin: auto;\r\n  position: relative;\r\n  border-bottom: solid 2px rgb(255, 255, 255);\r\n}\r\n\r\ninput[type=\"text\"] {\r\n  padding: 9px;\r\n  padding-bottom: 2px;\r\n  max-height: 100%;\r\n  font-size: 24px;\r\n  border: none;\r\n  background-color: transparent;\r\n  color: white;\r\n}\r\n\r\ninput:focus {\r\n  border: none;\r\n  outline: none;\r\n}\r\n\r\n.search-container button {\r\n  float: right;\r\n  /* padding: 6px 10px; */\r\n  background: transparent;\r\n  font-size: 17px;\r\n  border: none;\r\n  cursor: pointer;\r\n}\r\n\r\n#search-bar-form {\r\n  display: flex;\r\n  height: 100%;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -970,13 +1013,13 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/assets/background-6.jpg":
-/*!*************************************!*\
-  !*** ./src/assets/background-6.jpg ***!
-  \*************************************/
+/***/ "./src/assets/back3.jpg":
+/*!******************************!*\
+  !*** ./src/assets/back3.jpg ***!
+  \******************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "assets/background-6.jpg";
+module.exports = __webpack_require__.p + "assets/back3.jpg";
 
 /***/ }),
 
@@ -1132,21 +1175,21 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/layout */ "./src/components/layout.js");
-/* harmony import */ var _components_weatherDayCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/weatherDayCard */ "./src/components/weatherDayCard.js");
-/* harmony import */ var _functions_weatherAPI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./functions/weatherAPI */ "./src/functions/weatherAPI.js");
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
+/* harmony import */ var _functions_weatherAPI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions/weatherAPI */ "./src/functions/weatherAPI.js");
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
 
 
 
 
-console.log("1, 2 ,3");
-(0,_functions_weatherAPI__WEBPACK_IMPORTED_MODULE_2__.weatherAPICall)("Auckland");
-(0,_functions_weatherAPI__WEBPACK_IMPORTED_MODULE_2__.forecastAPICall)("Auckland");
-(0,_functions_weatherAPI__WEBPACK_IMPORTED_MODULE_2__.restOfWeekData)("Auckland");
+//creates all HTML Dom Elements
 (0,_components_layout__WEBPACK_IMPORTED_MODULE_0__.addToBody)();
-(0,_components_weatherDayCard__WEBPACK_IMPORTED_MODULE_1__.addIcon)();
+
+//api functions to call to retreive data from weatherapi.com
+(0,_functions_weatherAPI__WEBPACK_IMPORTED_MODULE_1__.weatherAPICall)("Auckland");
+(0,_functions_weatherAPI__WEBPACK_IMPORTED_MODULE_1__.forecastAPICall)("Auckland");
+(0,_functions_weatherAPI__WEBPACK_IMPORTED_MODULE_1__.restOfWeekData)("Auckland");
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle74f4735852e3b3a33641.js.map
+//# sourceMappingURL=bundleac22455282f507849b41.js.map
